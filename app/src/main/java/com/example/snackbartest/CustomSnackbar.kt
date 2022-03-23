@@ -17,4 +17,15 @@ class CustomSnackbar @JvmOverloads constructor(
     fun setTitle(title: String) {
         binding.title.text = title
     }
+
+    init {
+        context.theme.obtainStyledAttributes(attrs, R.styleable.CustomSnackbar, 0, 0).apply {
+            try {
+                val title = getString(R.styleable.CustomSnackbar_title) ?: ""
+                setTitle(title)
+            } finally {
+                recycle()
+            }
+        }
+    }
 }

@@ -10,6 +10,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
+
+//        binding.customSnackbar.setTitle("Test title!")
+
         setContentView(binding.root)
     }
 }
