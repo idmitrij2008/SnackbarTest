@@ -11,7 +11,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
 
-        binding.customSnackbar.setTitle("Another test title!")
+        binding.customSnackbar.title.text = "Another test title!"
 
         setContentView(binding.root)
     }

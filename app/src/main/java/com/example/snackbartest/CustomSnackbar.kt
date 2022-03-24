@@ -14,14 +14,12 @@ class CustomSnackbar @JvmOverloads constructor(
     private val binding =
         CustomSnackbarLayoutBinding.inflate(LayoutInflater.from(context), this, true)
 
-    fun setTitle(title: String) {
-        binding.title.text = title
-    }
+    val title = binding.title
 
     init {
-        context.theme.obtainStyledAttributes(attrs, R.styleable.CustomSnackbar, 0, 0).apply {
-            val title = getString(R.styleable.CustomSnackbar_title) ?: ""
-            setTitle(title)
-        }.recycle()
+//        context.theme.obtainStyledAttributes(attrs, R.styleable.CustomSnackbar, 0, 0).apply {
+//            val title = getString(R.styleable.CustomSnackbar_title) ?: ""
+//            setTitle(title)
+//        }.recycle()
     }
 }
