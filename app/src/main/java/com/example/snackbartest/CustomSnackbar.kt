@@ -5,7 +5,13 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.TextView
 import androidx.appcompat.widget.LinearLayoutCompat
+import androidx.lifecycle.findViewTreeLifecycleOwner
+import androidx.lifecycle.lifecycleScope
 import com.example.snackbartest.databinding.CustomSnackbarLayoutBinding
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+
+private const val DELAY_HIDE_MILLIS = 3000L
 
 class CustomSnackbar @JvmOverloads constructor(
     context: Context,
@@ -26,10 +32,18 @@ class CustomSnackbar @JvmOverloads constructor(
     }
 
     fun show() {
-        binding.title.animate().translationY(80.toDp(context).toFloat())
+        findViewTreeLifecycleOwner()?.lifecycleScope?.launch {
+            showSnackbar()
+            delay(DELAY_HIDE_MILLIS)
+            hideSnackbar()
+        }
     }
 
-    private fun hide() {
+    private fun hideSnackbar() {
         binding.title.animate().translationY(0f)
+    }
+
+    private fun showSnackbar() {
+        binding.title.animate().translationY(80.toDp(context).toFloat())
     }
 }
