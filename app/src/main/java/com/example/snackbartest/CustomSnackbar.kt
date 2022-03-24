@@ -26,6 +26,10 @@ class CustomSnackbar @JvmOverloads constructor(
     }
 
     fun show() {
-        binding.title.animate().translationY(100f)
+        binding.title.animate().translationY(80.toDp(context).toFloat())
+    }
+
+    private fun hide() {
+        binding.title.animate().translationY(0f)
     }
 }
