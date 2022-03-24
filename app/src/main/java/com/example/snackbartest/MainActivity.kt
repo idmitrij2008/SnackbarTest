@@ -13,6 +13,10 @@ class MainActivity : AppCompatActivity() {
 
         binding.customSnackbar.title.text = "Another test title!"
 
+        binding.button.setOnClickListener {
+            binding.customSnackbar.show()
+        }
+
         setContentView(binding.root)
     }
 }
